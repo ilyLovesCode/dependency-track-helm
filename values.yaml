@@ -176,7 +176,7 @@ ingress:
 
 # -- configuration of postgres
 postgresql:
-  enabled: true
+  enabled: false
   postgresqlUsername: deptrack
   postgresqlPassword: deptrack
   postgresqlDatabase: deptrack
