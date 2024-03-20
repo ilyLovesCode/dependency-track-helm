@@ -98,13 +98,6 @@ apiserver:
     tag: 4.6.3
     pullPolicy: IfNotPresent
   env: []
-  persistentVolume:
-    accessModes:
-    - ReadWriteOnce
-    enabled: false
-    size: 8Gi
-    annotations: {}
-    storageClass: ""
   podSecurityContext:
     fsGroup: 1000
   securityContext:
@@ -124,8 +117,8 @@ apiserver:
   resources:
   # https://docs.dependencytrack.org/getting-started/deploy-docker/
     requests:
-      cpu: 2
-      memory: 4608Mi
+      cpu: 1
+      memory: 1608Mi
     limits:
       cpu: 4
       memory: 16Gi
