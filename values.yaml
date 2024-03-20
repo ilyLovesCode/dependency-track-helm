@@ -68,7 +68,8 @@ frontend:
     # Annotations to add
     # Example:
     #  iam.gke.io/gcp-service-account: a@b.com
-    annotations: {}
+    annotations:
+      somekey: soevalue
   livenessProbe:
     enabled: true
     path: "/"
@@ -100,11 +101,6 @@ apiserver:
   env: []
   persistentVolume:
     enabled: false
-    accessModes:
-    - ReadWriteOnce
-    size: 8Gi
-    annotations: {}
-    storageClass: ""
   podSecurityContext:
     fsGroup: 1000
   securityContext:
@@ -122,13 +118,12 @@ apiserver:
   emptyDir:
     sizeLimit: 8Gi
   resources:
-  # https://docs.dependencytrack.org/getting-started/deploy-docker/
     requests:
-      cpu: 1
-      memory: 1608Mi
+      cpu: 1600m
+      memory: 5Gi
     limits:
-      cpu: 4
-      memory: 16Gi
+      cpu: 2
+      memory: 5Gi
   nameOverride: ""
   fullnameOverride: ""
   initContainers: []
@@ -141,7 +136,8 @@ apiserver:
     # Annotations to add
     # Example:
     #  iam.gke.io/gcp-service-account: a@b.com
-    annotations: {}
+    annotations:
+      somekey: soevalue
   # See https://docs.dependencytrack.org/getting-started/configuration/ for backend configuration options.
   livenessProbe:
     enabled: true
@@ -177,6 +173,21 @@ ingress:
 # -- configuration of postgres
 postgresql:
   enabled: false
-  postgresqlUsername: deptrack
-  postgresqlPassword: deptrack
-  postgresqlDatabase: deptrack
+apiserver:
+  serviceAccount:
+    annotations:
+      somekey: soevalue
+  persistentVolume:
+    enabled: false
+  resources:
+    requests:
+      cpu: 1600m
+      memory: 5Gi
+    limits:
+      cpu: 2
+      memory: 5Gi
+frontend:
+  replicaCount: 2
+  serviceAccount:
+    annotations:
+      somekey: soevalue
