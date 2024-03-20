@@ -101,7 +101,7 @@ apiserver:
   persistentVolume:
     accessModes:
     - ReadWriteOnce
-    enabled: true
+    enabled: false
     size: 8Gi
     annotations: {}
     storageClass: ""
