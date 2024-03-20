@@ -98,6 +98,13 @@ apiserver:
     tag: 4.6.3
     pullPolicy: IfNotPresent
   env: []
+  persistentVolume:
+    enabled: false
+    accessModes:
+    - ReadWriteOnce
+    size: 8Gi
+    annotations: {}
+    storageClass: ""
   podSecurityContext:
     fsGroup: 1000
   securityContext:
